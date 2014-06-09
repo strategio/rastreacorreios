@@ -30,9 +30,9 @@ class MyrtilleRastreaCorreiosCheckModuleFrontController extends ModuleFrontContr
 		$this->tn_status = null;
 
 		// Check if the Tracking number exist in database (i.e. this service is just for customers)
-		if(!Db::getInstance()->getRow("SELECT tracking_number FROM "._DB_PREFIX_."order_carrier WHERE tracking_number = '".$this->tn."'"))
+		if(!Db::getInstance()->getRow("SELECT tracking_number FROM "._DB_PREFIX_."order_carrier WHERE tracking_number = '".pSQL($this->tn)."'"))
 			return;
-//ddd(filemtime($filename) + $this->cache_time .' > '. time());
+
 		// Check if cache doesn't exists OR cache is too old
 		if(file_exists($filename) != true || (filemtime($filename) + $this->cache_time) < time()) {
 			// Call Correios to get the parcel status
