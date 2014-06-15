@@ -24,6 +24,11 @@ class MyrtilleRastreaCorreiosCheckModuleFrontController extends ModuleFrontContr
 
 		$this->cache_dir = $this->cache_dir.'rastreacorreios/';
 
+		if(!file_exists($this->cache_dir) && !is_dir($this->cache_dir))
+		{
+			mkdir($this->cache_dir);
+		}
+
 		// Retrieve Tracking Number
 		$this->tn = Tools::getValue('tracking_number');
 		$filename = $this->cache_dir.$this->tn.'.json';
