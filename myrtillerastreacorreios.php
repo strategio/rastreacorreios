@@ -66,6 +66,10 @@ class MyrtilleRastreaCorreios extends Module
 	 */
 	public function getContent()
 	{
-		return Context::getContext()->link->getModuleLink($this->name, 'check');
+		$output = '<div class="panel">';
+		$output .= '<b>'.$this->l('Link de rastreamento : ').'</b>'.Context::getContext()->link->getModuleLink($this->name, 'check=@');
+		$output .= '</div>';
+
+		return $output;
 	}
 }
