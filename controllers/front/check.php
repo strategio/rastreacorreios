@@ -47,6 +47,7 @@ class MyrtilleRastreaCorreiosCheckModuleFrontController extends ModuleFrontContr
 			curl_setopt($ch, CURLOPT_POST, true);
 			curl_setopt($ch, CURLOPT_POSTFIELDS, array('objetos' => $this->tn, 'btnPesq' => 'Buscar'));
 			curl_setopt($ch, CURLOPT_URL, $this->module->correios_endpoint);
+			curl_setopt($ch, CURLOPT_REFERER, $this->module->correios_endpoint);
 			$res = curl_exec($ch);
 			curl_close($ch);
 
